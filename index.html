@@ -5,6 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thiệp Chúc Mừng 20/11</title>
     <style>
+        /* --- Falling Flowers --- */
+.flower {
+    position: fixed;
+    top: -50px;
+    font-size: 28px;
+    pointer-events: none;
+    animation: fall linear forwards;
+    opacity: 0.9;
+    z-index: 9999;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0.4;
+    }
+}
         /* --- Import Google Fonts --- */
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Patrick+Hand&display=swap');
 
@@ -1053,3 +1074,4 @@
 
 </body>
 </html>
+

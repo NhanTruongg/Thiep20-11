@@ -761,6 +761,69 @@
                 transform: translateX(0) !important;
             }
         }
+        /* --- NÚT TẠO THIỆP (chỉ thêm) --- */
+        .create-card-button-container {
+            text-align: center;
+            margin: 40px 0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: 0.7s;
+        }
+        .create-card-button-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .create-card-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: linear-gradient(135deg, #e83e8c, #f093fb);
+            color: white;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 22px;
+            font-weight: bold;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4);
+            transition: all 0.4s ease;
+            animation: buttonPulse 2s infinite;
+        }
+        .create-card-button:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(232, 62, 140, 0.6);
+            background: linear-gradient(135deg, #f093fb, #e83e8c);
+        }
+        .create-card-button .button-icon {
+            font-size: 28px;
+            animation: iconBounce 1.5s infinite;
+        }
+        .create-card-button .button-arrow {
+            transition: transform 0.3s ease;
+        }
+        .create-card-button:hover .button-arrow {
+            transform: translateX(8px);
+        }
+        @keyframes buttonPulse {
+            0%, 100% { box-shadow: 0 8px 20px rgba(232, 62, 140, 0.4); }
+            50% { box-shadow: 0 12px 30px rgba(232, 62, 140, 0.6); }
+        }
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        @media (max-width: 768px) {
+            .create-card-button {
+                font-size: 18px;
+                padding: 14px 28px;
+            }
+            .create-card-button .button-icon {
+                font-size: 24px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -797,6 +860,14 @@
                 <p class="fade-in">
                     Hãy trải nghiệm công cụ này để tự tay thiết kế tấm thiệp độc đáo, ghi dấu những lời chúc chân thành và lan tỏa tình cảm ấm áp đến những người thầy đáng kính!
                 </p>
+                <!-- NÚT TẠO THIỆP - REDIRECT -->
+                <div class="create-card-button-container fade-in" style="text-align: center; margin: 40px 0;">
+                    <a href="https://nhantruongg.github.io/TaoThiep2011/" class="create-card-button" target="_blank">
+                        <span class="button-icon">Tạo</span>
+                        Tạo Thiệp Ngay
+                        <span class="button-arrow">Mũi tên</span>
+                    </a>
+                </div>
                 <div class="arrow fade-in">
                     <svg width="150" height="70" viewBox="0 0 162 72" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.37561 41.2584C20.6548 44.5441 68.3242 55.433 103.993 42.404C143.429 28.024 149.076 9.35101 149.076 9.35101C149.076 9.35101 146.545 17.2016 142.283 20.9168C138.021 24.6319 130.685 28.024 130.685 28.024" stroke="#555" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>

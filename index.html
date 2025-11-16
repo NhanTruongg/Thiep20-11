@@ -1,0 +1,1404 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Thiệp Chúc Mừng 20/11</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===========================
+           Styles from index (3).html
+           =========================== */
+        /* --- Falling Flowers --- */
+        .flower {
+            position: fixed;
+            top: -50px;
+            font-size: 28px;
+            pointer-events: none;
+            animation: fall linear forwards;
+            opacity: 0.9;
+            z-index: 9999;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0.4;
+            }
+        }
+
+        /* --- Global Styles --- */
+        body {
+            font-family: 'Patrick Hand', cursive;
+            background-color: #fdfaf5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            overflow-x: hidden; /* Ngăn cuộn ngang */
+        }
+
+        /* --- Main Container --- */
+        .container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        /* --- Header with Logo --- */
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .logo {
+            font-family: 'Arial', sans-serif;
+            font-weight: bold;
+            background-color: #007BFF;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            font-size: 24px;
+            position: relative;
+            z-index: 2;
+        }
+        .logo span {
+            color: #FFD700;
+        }
+
+        /* --- Hero Image Section --- */
+        .hero-section {
+            position: relative;
+            margin: 30px 0 10px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .hero-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(232, 62, 140, 0.7) 0%, rgba(102, 126, 234, 0.7) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            padding: 40px;
+        }
+
+        .hero-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 64px;
+            font-weight: 700;
+            margin: 0 0 20px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .hero-subtitle {
+            font-size: 24px;
+            margin: 0;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        /* --- Create Button under hero (chosen position A) --- */
+        .open-generator {
+            margin: 22px auto 0;
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(90deg,#ff5f6d,#ffc371);
+            border: none;
+            color: white;
+            font-weight: 700;
+            font-size: 18px;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(255,99,71,0.18);
+            cursor: pointer;
+            transition: transform .18s ease, box-shadow .18s ease;
+        }
+        .open-generator:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(255,99,71,0.22); }
+
+        /* --- Decorative Elements Around Header --- */
+        .header-decoration {
+            position: absolute;
+            font-size: 40px;
+            opacity: 0.3;
+            animation: float-gentle 3s ease-in-out infinite;
+        }
+
+        .header-decoration:nth-child(1) {
+            top: -20px;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .header-decoration:nth-child(2) {
+            top: -20px;
+            right: 10%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float-gentle {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(10deg); }
+        }
+
+        /* --- Card Content --- */
+        .card-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: flex-start;
+        }
+
+        .main-text {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .date {
+            font-family: 'Dancing Script', cursive;
+            font-size: 120px;
+            font-weight: 700;
+            color: #e83e8c;
+            line-height: 1;
+            margin: 0;
+            opacity: 0; /* JS Animation */
+            transform: scale(0.8); /* JS Animation */
+            transition: opacity 1s ease, transform 1s ease;
+        }
+
+        .main-text p {
+            font-size: 22px;
+            line-height: 1.8;
+            margin-top: 20px;
+            opacity: 0; /* JS Animation */
+            transform: translateY(20px); /* JS Animation */
+            transition: opacity 0.8s ease, transform 0.8s ease;
+            transition-delay: 0.5s;
+        }
+
+        .arrow {
+            text-align: right;
+            margin-top: 30px;
+            opacity: 0; /* JS Animation */
+            transform: translateX(-30px); /* JS Animation */
+            transition: opacity 1s ease 1s, transform 1s ease 1s;
+        }
+
+        .arrow img {
+            width: 150px;
+            transform: rotate(-10deg);
+        }
+
+        /* --- Note Card --- */
+        .note {
+            flex: 1;
+            min-width: 280px;
+            background-color: #fffacd;
+            padding: 30px;
+            border: 2px dashed #d69ed6;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.1);
+            font-family: 'Dancing Script', cursive;
+            font-size: 24px;
+            line-height: 1.7;
+            position: relative;
+            top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0; /* JS Animation */
+            transform: rotate(2deg) translateX(20px); /* JS Animation */
+            transition: opacity 1s ease 0.8s, transform 1s ease 0.8s;
+        }
+
+        .note:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 10px 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* --- Additional Content for Scrolling --- */
+        .extra-content {
+            margin-top: 150px;
+            text-align: center;
+            padding: 40px 20px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .extra-content h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            color: #333;
+        }
+
+        .extra-content p {
+            font-size: 20px;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 20px auto 0;
+        }
+
+        /* --- Image Gallery Section --- */
+        .image-gallery {
+            margin: 80px 0;
+            padding: 40px 20px;
+        }
+
+        .gallery-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            text-align: center;
+            color: #e83e8c;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            aspect-ratio: 4/3;
+            opacity: 0;
+            transform: scale(0.9) translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .gallery-item.visible {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover::after {
+            opacity: 1;
+        }
+
+        /* --- Wishes Section --- */
+        .wishes-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            color: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .wishes-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .wishes-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 52px;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .wishes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .wish-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .wish-card.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .wish-card:nth-child(even) {
+            transform: translateX(30px);
+        }
+
+        .wish-card:nth-child(even).visible {
+            transform: translateX(0);
+        }
+
+        .wish-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+        }
+
+        .wish-card p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        .wish-icon {
+            font-size: 32px;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        /* --- Floating Elements --- */
+        .floating-elements {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .floating-element {
+            position: absolute;
+            opacity: 0.1;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-100px) rotate(180deg);
+            }
+        }
+
+        .floating-element:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .floating-element:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .floating-element:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .floating-element:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .floating-element:nth-child(5) { left: 90%; animation-delay: 8s; }
+
+        /* --- Decorative Flowers --- */
+        .decorative-section {
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+
+        .flower-decoration {
+            font-size: 60px;
+            margin: 20px;
+            display: inline-block;
+            animation: rotate 10s infinite linear;
+            opacity: 0.3;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* --- Quote Section --- */
+        .quote-section {
+            background: linear-gradient(45deg, #f093fb 0%, #f5576c 100%);
+            padding: 50px;
+            border-radius: 20px;
+            margin: 60px 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: scale(0.95);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .quote-section.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        .quote-text {
+            font-family: 'Dancing Script', cursive;
+            font-size: 36px;
+            font-style: italic;
+            line-height: 1.6;
+            margin: 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .quote-author {
+            margin-top: 20px;
+            font-size: 20px;
+            opacity: 0.9;
+        }
+
+        /* --- Final Message Section --- */
+        .final-message {
+            margin-top: 60px;
+        }
+
+        .final-message h2 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            color: #e83e8c;
+            margin-bottom: 30px;
+        }
+
+        .final-message p {
+            font-size: 22px;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* --- Statistics Section --- */
+        .stats-section {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            color: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .stats-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .stats-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px) scale(1.05);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 18px;
+            opacity: 0.9;
+        }
+
+        /* --- Timeline Section --- */
+        .timeline-section {
+            margin: 80px 0;
+            padding: 40px 20px;
+        }
+
+        .timeline-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            text-align: center;
+            color: #e83e8c;
+            margin-bottom: 50px;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, #e83e8c, #667eea);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin: 40px 0;
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: opacity 0.8s, transform 0.8s;
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateX(50px);
+        }
+
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            width: 45%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content {
+            margin-left: auto;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            background: #e83e8c;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #e83e8c;
+            z-index: 2;
+        }
+
+        .timeline-year {
+            font-weight: bold;
+            color: #e83e8c;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-text {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* --- Testimonials Section --- */
+        .testimonials-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 60px 40px;
+            border-radius: 20px;
+            margin: 60px 0;
+            color: white;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+
+        .testimonials-section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .testimonials-title {
+            font-family: 'Dancing Script', cursive;
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 40px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255,255,255,0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .testimonial-text {
+            font-size: 16px;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            font-size: 14px;
+            opacity: 0.9;
+            text-align: right;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .date {
+                font-size: 90px;
+            }
+            .main-text p, .note {
+                font-size: 20px;
+            }
+            .card-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .note {
+                top: 0;
+                transform: rotate(0deg);
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .wishes-grid {
+                grid-template-columns: 1fr;
+            }
+            .wishes-title, .gallery-title {
+                font-size: 36px;
+            }
+            .quote-text {
+                font-size: 28px;
+            }
+            .hero-title {
+                font-size: 42px;
+            }
+            .hero-subtitle {
+                font-size: 18px;
+            }
+            .hero-image {
+                height: 300px;
+            }
+            .timeline::before {
+                left: 20px;
+            }
+            .timeline-content {
+                width: calc(100% - 60px);
+                margin-left: 60px !important;
+            }
+            .timeline-dot {
+                left: 20px;
+            }
+            .timeline-item {
+                transform: translateX(0) !important;
+            }
+        }
+
+        /* ===========================================
+           Namespaced styles for Fullscreen Generator
+           (from index (2).html) - prefixed with .fs-
+           =========================================== */
+
+        /* Container for fullscreen modal */
+        .fs-modal {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            padding: 20px;
+            overflow: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+        .fs-modal.active { display: flex; }
+
+        .fs-panel {
+            width: 100%;
+            max-width: 420px;
+            background: linear-gradient(180deg,#fff,#fff);
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            position: relative;
+            padding: 18px;
+            transform-origin: center;
+            animation: fs-appear .28s ease;
+        }
+        @keyframes fs-appear {
+            from { transform: translateY(12px) scale(.98); opacity: 0; }
+            to { transform: translateY(0) scale(1); opacity: 1; }
+        }
+
+        .fs-close {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            background: transparent;
+            border: none;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .fs-input-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            width: 100%;
+            margin-bottom: 8px;
+        }
+        .fs-input-group label { font-weight: bold; color: #cc3333; font-size: 1.05em; }
+        .fs-input-group input {
+            padding: 12px 14px; font-size: 1em; border: 2px solid #d89648; border-radius: 10px;
+            outline: none; transition: all 0.2s;
+        }
+        .fs-input-group input:focus { border-color: #cc3333; box-shadow: 0 0 8px rgba(204,51,51,0.12); }
+
+        .fs-create-button {
+            width: 100%;
+            padding: 12px 14px;
+            background: #cc3333; color: white; border: none;
+            border-radius: 12px; font-weight: 700; cursor: pointer;
+            margin-top: 8px;
+        }
+        .fs-create-button:hover { background: #b02a2a; transform: translateY(-2px); }
+
+        .fs-download-button {
+            width: 100%;
+            padding: 10px 14px;
+            background: #2e8b57; color: white; border: none;
+            border-radius: 10px; font-weight: 700; cursor: pointer;
+            margin-top: 10px;
+            opacity: 0; pointer-events: none;
+        }
+        .fs-download-button.visible { opacity: 1; pointer-events: auto; }
+
+        /* fs card wrapper (namespaced) */
+        .fs-card-wrapper { width: 100%; min-height: 320px; position: relative; perspective: 1000px; margin-top: 12px; }
+        .fs-card-wrapper.visible { opacity: 1; transform: scale(1); }
+        .fs-card {
+            width: 100%; min-height: 180px; position: absolute; bottom: 0; left: 0;
+            background: #fff; border-radius: 12px; padding: 18px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.18); transform: translateY(100%) scale(0.9);
+            transform-origin: bottom center; transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0; z-index: 1; backface-visibility: hidden;
+        }
+        .fs-card-wrapper.active .fs-card { transform: translateY(-140px) scale(1.06); opacity: 1; }
+
+        .fs-card-content { position: relative; display: flex; flex-direction: column; min-height: 100%; }
+        .fs-card-content h1 { color: #cc3333; font-size: 1.6em; margin-bottom: 10px; border-bottom: 2px double #d89648; padding-bottom: 6px; text-align: center; z-index: 2; }
+        .fs-greeting-text { margin-top: 10px; font-size: 1em; line-height: 1.6; color: #333; text-align: left; padding: 0 5px; z-index: 2; }
+        .fs-signature { margin-top: 14px; font-style: italic; font-weight: bold; color: #555; text-align: right; padding-right: 10px; font-size: 1em; z-index: 2; }
+
+        .fs-flower-decoration { position: absolute; width: 52px; height: 52px; opacity: 0.7; z-index: 1; }
+        .fs-flower-top-left { top: 8px; left: 8px; transform: rotate(-20deg); }
+        .fs-flower-bottom-right { bottom: 8px; right: 8px; transform: rotate(160deg); }
+
+        .fs-envelope { width: 100%; height: 220px; position: absolute; bottom: 0; left: 0; border-radius: 12px; z-index: 2; transition: all 1.2s ease; transform-style: preserve-3d; }
+        .fs-envelope::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 175px solid transparent; border-right: 175px solid transparent; border-top: 110px solid; transform-origin: top; transition: transform 0.5s ease 0.1s; z-index: 3; }
+        .fs-card-wrapper.active .fs-envelope::before { transform: rotateX(180deg); }
+        .fs-card-wrapper.active .fs-envelope { transform: translateY(260px) scale(0.78); opacity: 0; pointer-events: none; }
+
+        .fs-open-button {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 4;
+            padding: 10px 18px; background: #cc3333; color: white; border: none; border-radius: 20px;
+            cursor: pointer; font-weight: bold; font-size: 1em; box-shadow: 0 5px 12px rgba(0,0,0,0.18); transition: all 0.2s;
+        }
+        .fs-open-button:hover { background: #b02a2a; transform: translate(-50%, -50%) scale(1.04); }
+        .fs-card-wrapper.active .fs-open-button { opacity: 0; pointer-events: none; }
+
+        /* small helper */
+        .fs-row { display:flex; gap:8px; align-items:center; justify-content:space-between; margin-top:10px;}
+        .fs-muted { color:#666; font-size:0.9em; }
+
+        /* ensure html2canvas output looks good on transparent backgrounds if needed */
+        canvas { max-width:100%; }
+
+        /* a little responsive for the modal */
+        @media (max-width: 480px) {
+            .fs-panel { max-width: 100%; padding: 12px; border-radius: 8px; }
+            .fs-envelope::before { border-left: calc(50% - 20px); border-right: calc(50% - 20px); border-top: 90px solid; }
+        }
+
+    </style>
+</head>
+<body>
+
+    <!-- Floating elements (decor) -->
+    <div class="floating-elements">
+        <div class="floating-element">🌸</div>
+        <div class="floating-element">📚</div>
+        <div class="floating-element">✏️</div>
+        <div class="floating-element">🎓</div>
+        <div class="floating-element">💐</div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <span class="header-decoration">🌺</span>
+            <span class="header-decoration">💐</span>
+            <div class="logo">D<span>ev</span> D<span>reamers</span></div>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero-section fade-in">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80" alt="Ngày Nhà giáo Việt Nam" class="hero-image" loading="eager" onerror="this.src='https://via.placeholder.com/1200x400/f0f0f0/666?text=Ngày+Nhà+Giáo+Việt+Nam+20/11'">
+            <div class="hero-overlay">
+                <h1 class="hero-title">Ngày Nhà Giáo Việt Nam</h1>
+                <p class="hero-subtitle">20 tháng 11 - Tri ân những người thầy đáng kính</p>
+            </div>
+        </section>
+
+        <!-- CREATE BUTTON (chosen A: under hero) -->
+        <div style="text-align:center;">
+            <button class="open-generator" id="openGeneratorBtn">Tạo Thiệp 20/11</button>
+        </div>
+
+        <!-- Remaining content (from file 3) -->
+        <main class="card-content">
+            <div class="main-text">
+                <h1 class="date fade-in">20/11</h1>
+                <p class="fade-in">
+                    Nhân ngày Nhà giáo Việt Nam, câu lạc bộ Dev Dreamers mang đến công cụ tạo thiệp tri ân, nơi bạn có thể gửi gắm những lời chúc chân thành đến thầy cô.
+                </p>
+                <p class="fade-in">
+                    Hãy trải nghiệm công cụ này để tự tay thiết kế tấm thiệp độc đáo, ghi dấu những lời chúc chân thành và lan tỏa tình cảm ấm áp đến những người thầy đáng kính!
+                </p>
+                <div class="arrow fade-in" aria-hidden="true">
+                    <svg width="150" height="70" viewBox="0 0 162 72" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M2.37561 41.2584C20.6548 44.5441 68.3242 55.433 103.993 42.404C143.429 28.024 149.076 9.35101 149.076 9.35101C149.076 9.35101 146.545 17.2016 142.283 20.9168C138.021 24.6319 130.685 28.024 130.685 28.024" stroke="#555" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M149.076 9.35107L130.685 28.0241L159.577 23.4476L149.076 9.35107Z" fill="#555"/>
+                    </svg>
+                </div>
+            </div>
+
+            <aside class="note fade-in">
+                Nhân dịp lễ 20/11, chúng em gửi tới các thầy cô lời chúc tốt đẹp và chân thành nhất, chúc thầy cô luôn hoàn thành tốt nhiệm vụ trong sự nghiệp trồng người.
+            </aside>
+        </main>
+
+        <section class="extra-content fade-in">
+            <h2>Lời Tri Ân</h2>
+            <p>Mỗi người thầy, người cô đều là những người lái đò thầm lặng, chắp cánh cho bao ước mơ bay cao, bay xa. Xin kính chúc các thầy cô luôn dồi dào sức khỏe, hạnh phúc và giữ mãi ngọn lửa nhiệt huyết với sự nghiệp cao quý của mình.</p>
+        </section>
+
+        <div class="decorative-section">
+            <span class="flower-decoration">🌺</span>
+            <span class="flower-decoration">🌻</span>
+            <span class="flower-decoration">🌷</span>
+            <span class="flower-decoration">🌹</span>
+        </div>
+
+        <section class="image-gallery">
+            <h2 class="gallery-title fade-in">Khoảnh Khắc Đẹp Về Thầy Cô</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=800&q=80" alt="Thầy cô giảng bài" loading="lazy" onerror="this.src='https://via.placeholder.com/800x600/f0f0f0/666?text=Thầy+Cô+Giảng+Bài'">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="Học sinh và thầy cô" loading="lazy" onerror="this.src='https://via.placeholder.com/800x600/f0f0f0/666?text=Học+Sinh+Và+Thầy+Cô'">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1529390079861-591de354faf5?w=800&q=80" alt="Lớp học" loading="lazy" onerror="this.src='https://via.placeholder.com/800x600/f0f0f0/666?text=Lớp+Học'">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&q=80" alt="Giáo dục" loading="lazy" onerror="this.src='https://via.placeholder.com/800x600/f0f0f0/666?text=Giáo+Dục'">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=800&q=80" alt="Thầy cô và học trò" loading="lazy" onerror="this.src='https://via.placeholder.com/800x600/f0f0f0/666?text=Thầy+Cô+Và+Học+Trò'">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&q=80" alt="Tri ân thầy cô" loading="lazy" onerror="this.src='https://via.placeholder.com/800x600/f0f0f0/666?text=Tri+Ân+Thầy+Cô'">
+                </div>
+            </div>
+        </section>
+
+        <section class="quote-section fade-in">
+            <p class="quote-text">"Dưới ánh mặt trời không có nghề nào cao quý hơn nghề dạy học"</p>
+            <p class="quote-author">— Comenius —</p>
+        </section>
+
+        <section class="wishes-section fade-in">
+            <h2 class="wishes-title">Những Lời Chúc Ý Nghĩa</h2>
+            <div class="wishes-grid">
+                <div class="wish-card fade-in">
+                    <span class="wish-icon">💝</span>
+                    <p>Nhân ngày Nhà giáo Việt Nam 20/11, em xin kính chúc các thầy cô luôn mạnh khỏe, hạnh phúc và thành công trong sự nghiệp trồng người cao quý.</p>
+                </div>
+                <div class="wish-card fade-in">
+                    <span class="wish-icon">🌺</span>
+                    <p>Thầy cô là những người lái đò thầm lặng, đưa bao thế hệ học trò cập bến tương lai. Chúc thầy cô luôn vui vẻ và tràn đầy năng lượng!</p>
+                </div>
+                <div class="wish-card fade-in">
+                    <span class="wish-icon">⭐</span>
+                    <p>Em xin gửi lời tri ân sâu sắc đến các thầy cô đã dìu dắt, dạy dỗ em nên người. Chúc thầy cô luôn dồi dào sức khỏe và hạnh phúc!</p>
+                </div>
+                <div class="wish-card fade-in">
+                    <span class="wish-icon">🎓</span>
+                    <p>Những bài học của thầy cô là hành trang quý giá theo em suốt cuộc đời. Chúc thầy cô luôn thành công và hạnh phúc trong cuộc sống!</p>
+                </div>
+                <div class="wish-card fade-in">
+                    <span class="wish-icon">📚</span>
+                    <p>Thầy cô không chỉ dạy kiến thức mà còn dạy cách sống, cách làm người. Em mãi mãi biết ơn và kính trọng thầy cô!</p>
+                </div>
+                <div class="wish-card fade-in">
+                    <span class="wish-icon">🌸</span>
+                    <p>Chúc các thầy cô luôn giữ được ngọn lửa nhiệt huyết với nghề, tiếp tục chắp cánh cho những ước mơ của học trò bay cao, bay xa!</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="stats-section fade-in">
+            <h2 class="stats-title">Những Con Số Ý Nghĩa</h2>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">20/11</span>
+                    <span class="stat-label">Ngày Nhà Giáo Việt Nam</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Lòng Biết Ơn Vô Hạn</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Tình Yêu Thương</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">💝</span>
+                    <span class="stat-label">Lời Chúc Chân Thành</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="timeline-section">
+            <h2 class="timeline-title fade-in">Hành Trình Tri Ân</h2>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">1982</div>
+                        <div class="timeline-text">Ngày 20/11 chính thức trở thành Ngày Nhà giáo Việt Nam, là dịp để học sinh, sinh viên bày tỏ lòng biết ơn đến thầy cô.</div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Hôm Nay</div>
+                        <div class="timeline-text">Chúng ta tiếp tục truyền thống tốt đẹp này, gửi những lời chúc, những bông hoa tươi thắm đến các thầy cô giáo.</div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-year">Tương Lai</div>
+                        <div class="timeline-text">Những bài học, những lời dạy của thầy cô sẽ mãi mãi là hành trang quý giá theo chúng ta suốt cuộc đời.</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="testimonials-section fade-in">
+            <h2 class="testimonials-title">Lời Cảm Nhận</h2>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Thầy cô không chỉ dạy kiến thức mà còn dạy cách sống, cách làm người. Em mãi mãi biết ơn!"</p>
+                    <p class="testimonial-author">— Học sinh —</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Những người thầy tốt nhất dạy từ trái tim, không phải từ sách vở. Cảm ơn thầy cô đã dành cả tâm huyết cho chúng em."</p>
+                    <p class="testimonial-author">— Sinh viên —</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Thầy cô là ngọn đèn soi sáng con đường tri thức, dẫn dắt chúng em đến với tương lai tươi sáng."</p>
+                    <p class="testimonial-author">— Cựu học sinh —</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="extra-content final-message fade-in">
+            <h2>Lời Kết</h2>
+            <p>
+                Ngày 20/11 là dịp để chúng ta bày tỏ lòng biết ơn sâu sắc đến những người thầy, người cô đã và đang dành cả cuộc đời để "trồng người".
+                Dù ở đâu, làm gì, chúng ta vẫn luôn nhớ về những người đã dạy dỗ, dìu dắt mình.
+                <strong>Xin kính chúc tất cả các thầy cô một ngày 20/11 thật ý nghĩa và hạnh phúc!</strong>
+            </p>
+        </section>
+    </div>
+
+    <!-- =========================
+         Fullscreen Generator Modal
+         (initially hidden)
+         ========================= -->
+    <div class="fs-modal" id="fsModal" aria-hidden="true">
+        <div class="fs-panel" role="dialog" aria-modal="true" aria-labelledby="fsTitle">
+            <button class="fs-close" id="fsCloseBtn" aria-label="Đóng cửa sổ">✕</button>
+
+            <h3 id="fsTitle" style="margin:0 0 6px 0; font-family:'Dancing Script',cursive; font-size:22px; color:#cc3333">Tạo Thiệp 20/11</h3>
+            <p class="fs-muted" style="margin-bottom:12px">Nhập tên thầy/cô và tạo thiệp. Sau đó tải PNG để gửi tặng.</p>
+
+            <div class="fs-input-group">
+                <label for="fs_teacherName">Tên Thầy/Cô:</label>
+                <input type="text" id="fs_teacherName" placeholder="VD: Cô Lan, Thầy Minh..." value="">
+            </div>
+
+            <div class="fs-row">
+                <button id="fs_createBtn" class="fs-create-button">Tạo Thiệp</button>
+                <button id="fs_downloadBtn" class="fs-download-button">Tải Thiệp PNG</button>
+            </div>
+
+            <div id="fs_cardContainer" class="fs-card-wrapper" aria-live="polite" style="margin-top:12px;"></div>
+
+            <div style="margin-top:12px; font-size:12px; color:#666;">
+                <em>Mẹo:</em> Nhấn "Mở Phong Bì" để xem thiệp, sau đó nhấn "Tải Thiệp PNG". Nếu không hiển thị, hãy chờ 1 giây rồi thử lại.
+            </div>
+        </div>
+    </div>
+
+    <!-- html2canvas (for PNG export) -->
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <!-- ===================
+         Scripts (from file 3)
+         =================== -->
+    <script>
+        // Observer + animations
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToFadeIn = document.querySelectorAll('.fade-in');
+            elementsToFadeIn.forEach(el => observer.observe(el));
+
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach((item, index) => {
+                observer.observe(item);
+                item.style.transitionDelay = `${index * 0.1}s`;
+            });
+
+            const wishCards = document.querySelectorAll('.wish-card');
+            wishCards.forEach((card, index) => {
+                observer.observe(card);
+                card.style.transitionDelay = `${index * 0.15}s`;
+            });
+
+            const galleryTitle = document.querySelector('.gallery-title');
+            if (galleryTitle) observer.observe(galleryTitle);
+
+            const quoteSection = document.querySelector('.quote-section');
+            if (quoteSection) observer.observe(quoteSection);
+
+            const wishesSection = document.querySelector('.wishes-section');
+            if (wishesSection) observer.observe(wishesSection);
+
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const floatingElements = document.querySelectorAll('.floating-element');
+                floatingElements.forEach((el, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    el.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+                });
+            });
+
+            const heroSection = document.querySelector('.hero-section');
+            if (heroSection) observer.observe(heroSection);
+
+            const statsSection = document.querySelector('.stats-section');
+            if (statsSection) observer.observe(statsSection);
+
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach((item, index) => {
+                observer.observe(item);
+                item.style.transitionDelay = `${index * 0.2}s`;
+            });
+
+            const timelineTitle = document.querySelector('.timeline-title');
+            if (timelineTitle) observer.observe(timelineTitle);
+
+            const testimonialsSection = document.querySelector('.testimonials-section');
+            if (testimonialsSection) observer.observe(testimonialsSection);
+
+            const testimonialCards = document.querySelectorAll('.testimonial-card');
+            testimonialCards.forEach((card, index) => {
+                observer.observe(card);
+                card.style.transitionDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+
+    <!-- Falling flowers generator (from file 3) -->
+    <script>
+        function createFallingFlower() {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            const flowerIcons = ['🌸', '🌺', '🌻', '🌷', '🌹'];
+            flower.innerText = flowerIcons[Math.floor(Math.random() * flowerIcons.length)];
+            flower.style.left = Math.random() * 100 + 'vw';
+            const duration = Math.random() * 5 + 5;
+            flower.style.animationDuration = duration + 's';
+            document.body.appendChild(flower);
+            setTimeout(() => flower.remove(), duration * 1000);
+        }
+        setInterval(createFallingFlower, 600);
+    </script>
+
+    <!-- ===========================
+         Fullscreen generator logic
+         (namespaced .fs- ids/classes)
+         =========================== -->
+    <script>
+        // Greetings array (from file 2)
+        const fs_greetings = [
+            `"Nhân ngày Nhà giáo Việt Nam, chúng con xin gửi lời tri ân sâu sắc nhất đến {teacher} – người lái đò thầm lặng. Chúc {teacher} luôn mạnh khỏe, hạnh phúc và gặt hái nhiều thành công!"<br><br>Trân trọng,<br>Học trò`,
+
+            `"{teacher} không chỉ dạy con chữ, mà còn dạy con cách làm người. Dù thời gian có trôi, công ơn của {teacher} mãi khắc sâu trong tim chúng con.<br><br>Chúc {teacher} ngày 20/11 thật nhiều niềm vui!"`,
+
+            `"Kính chúc {teacher} một ngày 20/11 tràn đầy yêu thương, được học trò tri ân và gia đình hạnh phúc. Cảm ơn {teacher} vì đã thắp lên ngọn lửa đam mê học tập!"`,
+
+            `"Nhân ngày Nhà giáo, chúng con xin gửi lời chúc tốt đẹp nhất đến {teacher} – người đã hy sinh tuổi trẻ để gieo mầm tri thức. Chúc {teacher} luôn khỏe mạnh!"`,
+
+            `"{teacher} là ngọn hải đăng soi sáng con đường học vấn. Xin gửi lời tri ân chân thành và chúc {teacher} ngày 20/11 thật ý nghĩa!"`,
+
+            `"Dù mai này có đi đâu, chúng con vẫn luôn nhớ về những bài học quý giá từ {teacher}. Chúc {teacher} luôn dồi dào sức khỏe và hạnh phúc!"`,
+
+            `"Cảm ơn {teacher} đã kiên nhẫn dìu dắt chúng con qua bao khó khăn. Chúc {teacher} ngày Nhà giáo thật nhiều hoa, nhiều quà và thật nhiều tình thương!"`,
+
+            `"{teacher} là người truyền lửa, là nguồn cảm hứng bất tận. Chúc {teacher} ngày 20/11 thật rực rỡ và luôn giữ được ngọn lửa đam mê với nghề!"`,
+
+            `"Lòng biết ơn dành cho {teacher} không bao giờ phai nhạt. Chúc {teacher} luôn mạnh khỏe, hạnh phúc và tiếp tục dẫn dắt nhiều thế hệ học trò thành công!"`,
+
+            `"Nhân ngày 20/11, kính chúc {teacher} luôn vui vẻ, khỏe mạnh và nhận được thật nhiều tình cảm từ học trò cũ lẫn mới. Cảm ơn {teacher} vì tất cả!"`
+        ];
+
+        const fs_envelopeColors = [
+            { base: '#f7b267', flap: '#d89648' },
+            { base: '#ffffff', flap: '#f0f0f0' },
+            { base: '#ffe4e1', flap: '#ffb6c1' },
+            { base: '#e6f3ff', flap: '#b3d9ff' },
+            { base: '#fff9e6', flap: '#ffe066' }
+        ];
+
+        let fs_currentCardWrapper = null;
+
+        function fs_createCard() {
+            const teacherName = document.getElementById('fs_teacherName').value.trim();
+            const name = teacherName ? teacherName : "Thầy/Cô";
+
+            const container = document.getElementById('fs_cardContainer');
+            const createBtn = document.getElementById('fs_createBtn');
+            const downloadBtn = document.getElementById('fs_downloadBtn');
+
+            // Random greeting + color
+            let greeting = fs_greetings[Math.floor(Math.random() * fs_greetings.length)];
+            greeting = greeting.replace(/{teacher}/g, name);
+            const color = fs_envelopeColors[Math.floor(Math.random() * fs_envelopeColors.length)];
+
+            // Build namespaced card HTML
+            const cardHTML = `
+            <div class="fs-card-wrapper visible" id="fsCardWrapper">
+                <div class="fs-card" id="fsCard">
+                    <div class="fs-card-content">
+                        <div class="fs-flower-decoration fs-flower-top-left"></div>
+                        <div class="fs-flower-decoration fs-flower-bottom-right"></div>
+                        <h1>Kính Chúc Mừng 20/11</h1>
+                        <p class="fs-greeting-text">${greeting}</p>
+                        <div class="fs-signature">— Học trò</div>
+                    </div>
+                </div>
+                <div class="fs-envelope" style="background-color:${color.base}">
+                    <button class="fs-open-button">Mở Phong Bì</button>
+                </div>
+            </div>
+            <style>#fsCardWrapper .fs-envelope::before { border-top-color: ${color.flap} !important; }</style>
+            `;
+
+            container.innerHTML = cardHTML;
+            fs_currentCardWrapper = document.getElementById('fsCardWrapper');
+
+            // Show download button
+            downloadBtn.classList.add('visible');
+
+            // Attach open envelope behavior
+            setTimeout(() => {
+                const openBtn = container.querySelector('.fs-open-button');
+                if (openBtn) {
+                    openBtn.onclick = () => {
+                        const wrapper = document.getElementById('fsCardWrapper');
+                        const card = document.getElementById('fsCard');
+                        if (!wrapper.classList.contains('active')) {
+                            wrapper.classList.add('active');
+                            // adjust panel height a bit (not required but nicer)
+                            setTimeout(() => {
+                                try {
+                                    wrapper.style.height = (card.scrollHeight + 260) + 'px';
+                                } catch (e) { /* ignore */ }
+                            }, 120);
+                        }
+                    };
+                }
+            }, 120);
+        }
+
+        // Download PNG using html2canvas for fs
+        async function fs_downloadPNG() {
+            if (!fs_currentCardWrapper) return;
+            const downloadBtn = document.getElementById('fs_downloadBtn');
+            downloadBtn.textContent = "Đang tạo ảnh...";
+            downloadBtn.disabled = true;
+
+            try {
+                // Wait a short moment to allow animations to settle
+                await new Promise(r => setTimeout(r, 250));
+
+                const canvas = await html2canvas(fs_currentCardWrapper, {
+                    scale: 2,
+                    backgroundColor: null,
+                    logging: false
+                });
+                const link = document.createElement('a');
+                link.download = `Thiep-2011-${Date.now()}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+            } catch (err) {
+                alert("Lỗi tải ảnh. Vui lòng thử lại!");
+                console.error(err);
+            } finally {
+                downloadBtn.textContent = "Tải Thiệp PNG";
+                downloadBtn.disabled = false;
+            }
+        }
+
+        // Hook up event listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            // Open modal button
+            const openBtn = document.getElementById('openGeneratorBtn');
+            const fsModal = document.getElementById('fsModal');
+            const fsClose = document.getElementById('fsCloseBtn');
+
+            openBtn.addEventListener('click', () => {
+                fsModal.classList.add('active');
+                fsModal.setAttribute('aria-hidden', 'false');
+                // reset fields
+                document.getElementById('fs_teacherName').value = '';
+                document.getElementById('fs_cardContainer').innerHTML = '';
+                document.getElementById('fs_downloadBtn').classList.remove('visible');
+                fs_currentCardWrapper = null;
+            });
+
+            fsClose.addEventListener('click', () => {
+                fsModal.classList.remove('active');
+                fsModal.setAttribute('aria-hidden', 'true');
+            });
+
+            // close when clicking outside panel
+            fsModal.addEventListener('click', (e) => {
+                if (e.target === fsModal) {
+                    fsModal.classList.remove('active');
+                    fsModal.setAttribute('aria-hidden', 'true');
+                }
+            });
+
+            // Create + Download buttons
+            document.getElementById('fs_createBtn').addEventListener('click', fs_createCard);
+            document.getElementById('fs_downloadBtn').addEventListener('click', fs_downloadPNG);
+
+            // handle Enter key in input to create
+            document.getElementById('fs_teacherName').addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    fs_createCard();
+                }
+            });
+        });
+    </script>
+</body>
+</html>

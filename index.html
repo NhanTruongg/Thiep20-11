@@ -6,27 +6,28 @@
     <title>Thiệp Chúc Mừng 20/11</title>
     <style>
         /* --- Falling Flowers --- */
-.flower {
-    position: fixed;
-    top: -50px;
-    font-size: 28px;
-    pointer-events: none;
-    animation: fall linear forwards;
-    opacity: 0.9;
-    z-index: 9999;
-}
+        .flower {
+            position: fixed;
+            top: -50px;
+            font-size: 28px;
+            pointer-events: none;
+            animation: fall linear forwards;
+            opacity: 0.9;
+            z-index: 9999;
+        }
 
-@keyframes fall {
-    0% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(110vh) rotate(360deg);
-        opacity: 0.4;
-    }
-}
-        <style>
+        @keyframes fall {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(110vh) rotate(360deg);
+                opacity: 0.4;
+            }
+        }
+        /* --- LỖI ĐÃ ĐƯỢC SỬA: Xóa dấu } thừa và thẻ <style> lồng ghép --- */
+
         /* --- Import Google Fonts --- */
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Patrick+Hand&display=swap');
 
@@ -765,7 +766,6 @@
 </head>
 <body>
 
-    <!-- Floating Background Elements -->
     <div class="floating-elements">
         <div class="floating-element">🌸</div>
         <div class="floating-element">📚</div>
@@ -778,11 +778,9 @@
         <header class="header">
             <span class="header-decoration">🌺</span>
             <span class="header-decoration">💐</span>
-            <!-- Bạn có thể thay thế bằng file logo .png nếu có -->
             <div class="logo">D<span>ev</span> D<span>reamers</span></div>
         </header>
 
-        <!-- Hero Image Section -->
         <section class="hero-section fade-in">
             <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80" alt="Ngày Nhà giáo Việt Nam" class="hero-image" loading="eager" onerror="this.src='https://via.placeholder.com/1200x400/f0f0f0/666?text=Ngày+Nhà+Giáo+Việt+Nam+20/11'">
             <div class="hero-overlay">
@@ -801,7 +799,6 @@
                     Hãy trải nghiệm công cụ này để tự tay thiết kế tấm thiệp độc đáo, ghi dấu những lời chúc chân thành và lan tỏa tình cảm ấm áp đến những người thầy đáng kính!
                 </p>
                 <div class="arrow fade-in">
-                    <!-- Sử dụng SVG để vẽ mũi tên thay vì ảnh để nhẹ và sắc nét hơn -->
                     <svg width="150" height="70" viewBox="0 0 162 72" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M2.37561 41.2584C20.6548 44.5441 68.3242 55.433 103.993 42.404C143.429 28.024 149.076 9.35101 149.076 9.35101C149.076 9.35101 146.545 17.2016 142.283 20.9168C138.021 24.6319 130.685 28.024 130.685 28.024" stroke="#555" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                         <path d="M149.076 9.35107L130.685 28.0241L159.577 23.4476L149.076 9.35107Z" fill="#555"/>
@@ -819,7 +816,6 @@
             <p>Mỗi người thầy, người cô đều là những người lái đò thầm lặng, chắp cánh cho bao ước mơ bay cao, bay xa. Xin kính chúc các thầy cô luôn dồi dào sức khỏe, hạnh phúc và giữ mãi ngọn lửa nhiệt huyết với sự nghiệp cao quý của mình.</p>
         </section>
 
-        <!-- Decorative Flowers -->
         <div class="decorative-section">
             <span class="flower-decoration">🌺</span>
             <span class="flower-decoration">🌻</span>
@@ -827,7 +823,6 @@
             <span class="flower-decoration">🌹</span>
         </div>
 
-        <!-- Image Gallery Section -->
         <section class="image-gallery">
             <h2 class="gallery-title fade-in">Khoảnh Khắc Đẹp Về Thầy Cô</h2>
             <div class="gallery-grid">
@@ -852,13 +847,11 @@
             </div>
         </section>
 
-        <!-- Quote Section -->
         <section class="quote-section fade-in">
             <p class="quote-text">"Dưới ánh mặt trời không có nghề nào cao quý hơn nghề dạy học"</p>
             <p class="quote-author">— Comenius —</p>
         </section>
 
-        <!-- Wishes Section -->
         <section class="wishes-section fade-in">
             <h2 class="wishes-title">Những Lời Chúc Ý Nghĩa</h2>
             <div class="wishes-grid">
@@ -889,7 +882,6 @@
             </div>
         </section>
 
-        <!-- Statistics Section -->
         <section class="stats-section fade-in">
             <h2 class="stats-title">Những Con Số Ý Nghĩa</h2>
             <div class="stats-grid">
@@ -912,7 +904,6 @@
             </div>
         </section>
 
-        <!-- Timeline Section -->
         <section class="timeline-section">
             <h2 class="timeline-title fade-in">Hành Trình Tri Ân</h2>
             <div class="timeline">
@@ -940,7 +931,6 @@
             </div>
         </section>
 
-        <!-- Testimonials Section -->
         <section class="testimonials-section fade-in">
             <h2 class="testimonials-title">Lời Cảm Nhận</h2>
             <div class="testimonials-grid">
@@ -959,7 +949,6 @@
             </div>
         </section>
 
-        <!-- Final Message -->
         <section class="extra-content final-message fade-in">
             <h2>Lời Kết</h2>
             <p>
@@ -1075,5 +1064,3 @@
 
 </body>
 </html>
-
-

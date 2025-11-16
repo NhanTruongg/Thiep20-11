@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20/11 - Tri Ân Thầy Cô & Tạo Thiệp</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+
+    <style>
+        /* ======================================= */
+        /* === 1. STYLE CHUNG CHO LANDING PAGE === */
+        /* ======================================= */
+        /* --- Falling Flowers (Hiệu ứng hoa rơi) --- */
+        .flower {
+            position: fixed; top: -50px; font-size: 28px; pointer-events: none;
+            animation: fall linear forwards; opacity: 0.9; z-index: 9999;
+        }
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0.4; }
+        }
+        
+        /* --- Global Styles --- */
+        body {
+            font-family: 'Patrick Hand', cursive; background-color: #fdfaf5;
+            color: #333; margin: 0; padding: 0; overflow-x: hidden;
+            display: flex; flex-direction: column; align-items: center; /* Căn giữa nội dung chính */
+        }
+
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s, transform 1s; }
+        .visible { opacity: 1; transform: none !important; }
+
+        /* --- Header & Hero Section --- */
+        .header { text-align: center; margin-bottom: 50px; position: relative; }
+        .hero-section { position: relative; margin: 30px 0 60px; border-radius: 20px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.2); transition: opacity 1s, transform 1s; }
+        .hero-image { width: 100%; height: 400px; object-fit: cover; display: block; }
+        .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(135deg, rgba(232, 62, 140, 0.7) 0%, rgba(102, 126, 234, 0.7) 100%); display: flex; align-items: center; justify-content: center; flex-direction: column; color: white; text-align: center; padding: 40px; }
+        .hero-title { font-family: 'Dancing Script', cursive; font-size: 64px; font-weight: 700; margin: 0 0 20px; text-shadow: 2px 2px 8px rgba(0,0,0,0.3); animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        .hero-subtitle { font-size: 24px; margin: 0; text-shadow: 1px 1px 4px rgba(0,0,0,0.3); }
+        .date { font-family: 'Dancing Script', cursive; font-size: 120px; font-weight: 700; color: #e83e8c; line-height: 1; margin: 0; transition: opacity 1s ease, transform 1s ease; }
+        .main-text p { font-size: 22px; line-height: 1.8; margin-top: 20px; transition: opacity 0.8s ease, transform 0.8s ease; transition-delay: 0.5s; }
+        .note { flex: 1; min-width: 280px; background-color: #fffacd; padding: 30px; border: 2px dashed #d69ed6; box-shadow: 5px 5px 15px rgba(0,0,0,0.1); font-family: 'Dancing Script', cursive; font-size: 24px; line-height: 1.7; position: relative; top: 20px; transition: opacity 1s ease 0.8s, transform 1s ease 0.8s; }
+
+        /* ======================================= */
+        /* === 2. STYLE RIÊNG CHO CÔNG CỤ TẠO THIỆP === */
+        /* ======================================= */
+        .card-tool-section {
+            padding: 40px 20px; margin-bottom: 50px; text-align: center;
+            background-color: #ffffff; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 90%; max-width: 600px;
+        }
+        .card-tool-section h2 {
+            font-family: 'Dancing Script', cursive; font-size: 48px; color: #cc3333; margin-bottom: 25px;
+        }
+
+        .input-group { display: flex; flex-direction: column; gap: 8px; width: 100%; margin: 0 auto 20px; }
+        .input-group label { font-weight: bold; color: #cc3333; font-size: 1.1em; text-align: left;}
+        .input-group input { padding: 12px 16px; font-size: 1em; border: 2px solid #d89648; border-radius: 12px; outline: none; transition: all 0.3s; }
+        .input-group input:focus { border-color: #cc3333; box-shadow: 0 0 8px rgba(204,51,51,0.3); }
+
+        .create-button {
+            padding: 14px 32px; background: #cc3333; color: white; border: none;
+            border-radius: 30px; font-size: 1.2em; font-weight: bold; cursor: pointer;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2); transition: all 0.3s; margin-top: 10px;
+        }
+        .create-button:hover { background: #b02a2a; transform: translateY(-2px); }
+
+        .download-button {
+            padding: 12px 28px; background: #3cb371; color: white; border: none;
+            border-radius: 25px; font-size: 1.1em; font-weight: bold; cursor: pointer;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.18); transition: all 0.3s; margin-top: 15px;
+            opacity: 0; pointer-events: none;
+        }
+        .download-button.visible { opacity: 1; pointer-events: auto; }
+        .download-button:hover { background: #2e8b57; transform: translateY(-2px); }
+
+        /* --- Card Styles (Tương tự index 2) --- */
+        #cardContainer { margin-top: 30px; }
+        .card-wrapper { width: 350px; min-height: 300px; position: relative; perspective: 1000px; opacity: 0; transform: scale(0.8); transition: all 0.6s; margin: 0 auto; }
+        .card-wrapper.visible { opacity: 1; transform: scale(1); }
+        .card {
+            width: 350px; min-height: 180px; position: absolute; bottom: 0; left: 0;
+            background: #fff; border-radius: 12px; padding: 25px 22px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.18); transform: translateY(100%) scale(0.9);
+            transform-origin: bottom center; transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            opacity: 0; z-index: 1; backface-visibility: hidden;
+        }
+        .card-wrapper.active .card { transform: translateY(-160px) scale(1.12); opacity: 1; }
+        .card-content { position: relative; display: flex; flex-direction: column; min-height: 100%; }
+        .card-content h1 { color: #cc3333; font-size: 2.2em; margin-bottom: 14px; border-bottom: 3px double #d89648; padding-bottom: 6px; text-align: center; z-index: 2; }
+        .greeting-text { margin-top: 16px; font-size: 1.05em; line-height: 1.75; color: #333; text-align: left; padding: 0 5px; z-index: 2; }
+        .signature { margin-top: 24px; font-style: italic; font-weight: bold; color: #555; text-align: right; padding-right: 10px; font-size: 1.1em; z-index: 2; }
+
+        .flower-decoration { position: absolute; width: 72px; height: 72px; opacity: 0.7; z-index: 1; }
+        .flower-decoration::before, .flower-decoration::after { content: ''; position: absolute; border-radius: 50%; }
+        .flower-decoration::before { width: 38px; height: 38px; background: #ff8c00; box-shadow: 0 0 12px rgba(255,140,0,0.5); top: 50%; left: 50%; transform: translate(-50%,-50%); }
+        .flower-decoration::after { width: 46px; height: 18px; background: #3cb371; border-radius: 0 50% 50% 0; transform: rotate(45deg); top: 10px; left: 0; }
+        .flower-top-left { top: 12px; left: 12px; transform: rotate(-20deg); }
+        .flower-bottom-right { bottom: 12px; right: 12px; transform: rotate(160deg); }
+
+        .envelope { width: 350px; height: 250px; position: absolute; bottom: 0; left: 0; border-radius: 12px; z-index: 2; transition: all 1.5s ease; transform-style: preserve-3d; }
+        .envelope::before { content: ''; position: absolute; top: 0; left: 0; width: 0; height: 0; border-left: 175px solid transparent; border-right: 175px solid transparent; border-top: 125px solid; transform-origin: top; transition: transform 0.6s ease 0.7s; z-index: 3; }
+        .card-wrapper.active .envelope::before { transform: rotateX(180deg); }
+        .card-wrapper.active .envelope { transform: translateY(320px) scale(0.75); opacity: 0; pointer-events: none; }
+
+        .open-button {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 4;
+            padding: 13px 26px; background: #cc3333; color: white; border: none; border-radius: 28px;
+            cursor: pointer; font-weight: bold; font-size: 1.15em; box-shadow: 0 5px 12px rgba(0,0,0,0.22); transition: all 0.3s;
+        }
+        .open-button:hover { background: #b02a2a; transform: translate(-50%, -50%) scale(1.08); }
+        .card-wrapper.active .open-button { opacity: 0; pointer-events: none; }
+
+        /* ======================================= */
+        /* === 3. RESPONSIVE VÀ CÁC STYLE KHÁC === */
+        /* ======================================= */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 42px; }
+            .hero-image { height: 300px; }
+            .date { font-size: 90px; }
+            .main-text p, .note { font-size: 20px; }
+            .card-content { flex-direction: column; align-items: center; }
+            .note { top: 0; transform: rotate(0deg); }
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="floating-elements">
+        <div class="floating-element">🌸</div>
+        <div class="floating-element">📚</div>
+        <div class="floating-element">✏️</div>
+        <div class="floating-element">🎓</div>
+        <div class="floating-element">💐</div>
+    </div>
+
+    <div class="container">
+        <header class="header">
+            <div class="logo">D<span>ev</span> D<span>reamers</span></div>
+        </header>
+
+        <section class="hero-section fade-in">
+            <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&q=80" alt="Ngày Nhà giáo Việt Nam" class="hero-image" loading="eager" onerror="this.src='https://via.placeholder.com/1200x400/f0f0f0/666?text=Ngày+Nhà+Giáo+Việt+Nam+20/11'">
+            <div class="hero-overlay">
+                <h1 class="hero-title">Ngày Nhà Giáo Việt Nam</h1>
+                <p class="hero-subtitle">20 tháng 11 - Tri ân những người thầy đáng kính</p>
+            </div>
+        </section>
+
+        <main class="card-content">
+            <div class="main-text">
+                <h1 class="date fade-in">20/11</h1>
+                <p class="fade-in">
+                    Nhân ngày Nhà giáo Việt Nam, câu lạc bộ Dev Dreamers mang đến công cụ tạo thiệp tri ân, nơi bạn có thể gửi gắm những lời chúc chân thành đến thầy cô.
+                </p>
+                <p class="fade-in">
+                    Hãy kéo xuống để sử dụng công cụ tạo thiệp độc đáo, ghi dấu những lời chúc chân thành và lan tỏa tình cảm ấm áp đến những người thầy đáng kính!
+                </p>
+            </div>
+
+            <aside class="note fade-in">
+                Nhân dịp lễ 20/11, chúng em gửi tới các thầy cô lời chúc tốt đẹp và chân thành nhất, chúc thầy cô luôn hoàn thành tốt nhiệm vụ trong sự nghiệp trồng người.
+            </aside>
+        </main>
+    </div> <section class="card-tool-section fade-in">
+        <h2>💌 Tạo Thiệp Tri Ân Thầy Cô 💌</h2>
+
+        <div class="input-group">
+            <label for="teacherName">Tên Thầy/Cô:</label>
+            <input type="text" id="teacherName" placeholder="VD: Cô Lan, Thầy Minh..." value="">
+        </div>
+
+        <button id="createBtn" class="create-button">Tạo Thiệp 20/11</button>
+
+        <button id="downloadBtn" class="download-button">Tải Thiệp PNG</button>
+
+        <div id="cardContainer"></div>
+    </section>
+    
+    <div class="container">
+        <section class="quote-section fade-in">
+            <p class="quote-text">"Dưới ánh mặt trời không có nghề nào cao quý hơn nghề dạy học"</p>
+            <p class="quote-author">— Comenius —</p>
+        </section>
+        </div>
+
+    <script>
+        // === 1. DỮ LIỆU VÀ CẤU HÌNH THIỆP (Từ index 2) ===
+        const greetings = [
+            `"Nhân ngày Nhà giáo Việt Nam, chúng con xin gửi lời tri ân sâu sắc nhất đến {teacher} – người lái đò thầm lặng. Chúc {teacher} luôn mạnh khỏe, hạnh phúc và gặt hái nhiều thành công!"<br><br>Trân trọng,<br>Học trò`,
+            `"{teacher} không chỉ dạy con chữ, mà còn dạy con cách làm người. Dù thời gian có trôi, công ơn của {teacher} mãi khắc sâu trong tim chúng con.<br><br>Chúc {teacher} ngày 20/11 thật nhiều niềm vui!"`,
+            `"Kính chúc {teacher} một ngày 20/11 tràn đầy yêu thương, được học trò tri ân và gia đình hạnh phúc. Cảm ơn {teacher} vì đã thắp lên ngọn lửa đam mê học tập!"`,
+            `"Nhân ngày Nhà giáo, chúng con xin gửi lời chúc tốt đẹp nhất đến {teacher} – người đã hy sinh tuổi trẻ để gieo mầm tri thức. Chúc {teacher} luôn khỏe mạnh!"`,
+            `"{teacher} là ngọn hải đăng soi sáng con đường học vấn. Xin gửi lời tri ân chân thành và chúc {teacher} ngày 20/11 thật ý nghĩa!"`,
+            `"Dù mai này có đi đâu, chúng con vẫn luôn nhớ về những bài học quý giá từ {teacher}. Chúc {teacher} luôn dồi dào sức khỏe và hạnh phúc!"`,
+            `"Cảm ơn {teacher} đã kiên nhẫn dìu dắt chúng con qua bao khó khăn. Chúc {teacher} ngày Nhà giáo thật nhiều hoa, nhiều quà và thật nhiều tình thương!"`,
+            `"{teacher} là người truyền lửa, là nguồn cảm hứng bất tận. Chúc {teacher} ngày 20/11 thật rực rỡ và luôn giữ được ngọn lửa đam mê với nghề!"`,
+            `"Lòng biết ơn dành cho {teacher} không bao giờ phai nhạt. Chúc {teacher} luôn mạnh khỏe, hạnh phúc và tiếp tục dẫn dắt nhiều thế hệ học trò thành công!"`,
+            `"Nhân ngày 20/11, kính chúc {teacher} luôn vui vẻ, khỏe mạnh và nhận được thật nhiều tình cảm từ học trò cũ lẫn mới. Cảm ơn {teacher} vì tất cả!"`
+        ];
+
+        const envelopeColors = [
+            { base: '#f7b267', flap: '#d89648' },
+            { base: '#ffffff', flap: '#f0f0f0' },
+            { base: '#ffe4e1', flap: '#ffb6c1' },
+            { base: '#e6f3ff', flap: '#b3d9ff' },
+            { base: '#fff9e6', flap: '#ffe066' }
+        ];
+
+        let currentCardWrapper = null;
+
+        // === 2. HÀM TẠO THIỆP (Từ index 2) ===
+        function createCard() {
+            const teacherName = document.getElementById('teacherName').value.trim();
+            const name = teacherName ? teacherName : "Thầy/Cô";
+
+            const container = document.getElementById('cardContainer');
+            const createBtn = document.getElementById('createBtn');
+            const downloadBtn = document.getElementById('downloadBtn');
+
+            // Ẩn nút tạo khi thiệp đã được tạo
+            createBtn.style.display = 'none';
+
+            // Random lời chúc và màu sắc
+            let greeting = greetings[Math.floor(Math.random() * greetings.length)];
+            greeting = greeting.replace(/{teacher}/g, name);
+            const color = envelopeColors[Math.floor(Math.random() * envelopeColors.length)];
+
+            const cardHTML = `
+            <div class="card-wrapper visible" id="cardWrapper">
+                <div class="card" id="card">
+                    <div class="card-content">
+                        <div class="flower-decoration flower-top-left"></div>
+                        <div class="flower-decoration flower-bottom-right"></div>
+                        <h1>Kính Chúc Mừng 20/11</h1>
+                        <p class="greeting-text">${greeting}</p>
+                    </div>
+                </div>
+                <div class="envelope" style="background-color:${color.base}">
+                    <button class="open-button">Mở Phong Bì</button>
+                </div>
+            </div>
+            <style>#cardWrapper .envelope::before { border-top-color: ${color.flap} !important; }</style>
+            `;
+
+            container.innerHTML = cardHTML;
+            currentCardWrapper = document.getElementById('cardWrapper');
+
+            // Hiển thị nút tải
+            downloadBtn.classList.add('visible');
+
+            // Gắn sự kiện mở phong bì
+            setTimeout(() => {
+                const openButton = document.querySelector('.open-button');
+                if (openButton) {
+                    openButton.onclick = () => {
+                        const wrapper = document.getElementById('cardWrapper');
+                        const card = document.getElementById('card');
+                        if (!wrapper.classList.contains('active')) {
+                            wrapper.classList.add('active');
+                            setTimeout(() => {
+                                wrapper.style.height = (card.scrollHeight + 280) + 'px';
+                            }, 100);
+                        }
+                    };
+                }
+            }, 100);
+        }
+
+        // === 3. HÀM TẢI PNG (Từ index 2) ===
+        document.getElementById('downloadBtn').onclick = async () => {
+            if (!currentCardWrapper) return;
+
+            const downloadBtn = document.getElementById('downloadBtn');
+            downloadBtn.textContent = "Đang tải...";
+            downloadBtn.disabled = true;
+
+            try {
+                // Tách thiệp ra khỏi wrapper để đảm bảo chỉ render thiệp đang mở
+                const cardToRender = document.getElementById('card');
+                const tempDiv = document.createElement('div');
+                tempDiv.style.position = 'absolute';
+                tempDiv.style.top = '-9999px';
+                tempDiv.appendChild(cardToRender.cloneNode(true));
+                document.body.appendChild(tempDiv);
+                
+                // Loại bỏ hiệu ứng transform và opacity để html2canvas chụp đúng kích thước
+                const cloneCard = tempDiv.querySelector('#card');
+                cloneCard.style.transform = 'none';
+                cloneCard.style.opacity = '1';
+                cloneCard.style.position = 'relative';
+                cloneCard.style.minHeight = 'auto';
+
+                const canvas = await html2canvas(cloneCard, {
+                    scale: 2,
+                    backgroundColor: '#ffffff', /* Đặt màu nền trắng cho ảnh */
+                    logging: false
+                });
+
+                const link = document.createElement('a');
+                link.download = `Thiep-2011-${Date.now()}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                
+                tempDiv.remove(); // Xóa div tạm
+            } catch (err) {
+                alert("Lỗi tải ảnh. Vui lòng thử lại!");
+                console.error(err);
+            } finally {
+                downloadBtn.textContent = "Tải Thiệp PNG";
+                downloadBtn.disabled = false;
+            }
+        };
+
+        // === 4. XỬ LÝ SỰ KIỆN VÀ HIỆU ỨNG (Từ index 3) ===
+        document.getElementById('createBtn').onclick = createCard;
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Hiệu ứng Fade-in khi cuộn trang
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            const elementsToFadeIn = document.querySelectorAll('.fade-in');
+            elementsToFadeIn.forEach(el => {
+                observer.observe(el);
+            });
+            
+            // Hiệu ứng Parallax cho Floating Elements
+            window.addEventListener('scroll', function() {
+                const scrolled = window.pageYOffset;
+                const floatingElements = document.querySelectorAll('.floating-element');
+                floatingElements.forEach((el, index) => {
+                    const speed = 0.5 + (index * 0.1);
+                    el.style.transform = `translateY(${scrolled * speed}px) rotate(${scrolled * 0.1}deg)`;
+                });
+            });
+            
+            // Tạo hoa rơi
+            function createFallingFlower() {
+                const flower = document.createElement('div');
+                flower.classList.add('flower');
+                const flowerIcons = ['🌸', '🌺', '🌻', '🌷', '🌹'];
+                flower.innerText = flowerIcons[Math.floor(Math.random() * flowerIcons.length)];
+                flower.style.left = Math.random() * 100 + 'vw';
+                const duration = Math.random() * 5 + 5; 
+                flower.style.animationDuration = duration + 's';
+                document.body.appendChild(flower);
+                setTimeout(() => { flower.remove(); }, duration * 1000);
+            }
+            setInterval(createFallingFlower, 500);
+        });
+    </script>
+</body>
+</html>
